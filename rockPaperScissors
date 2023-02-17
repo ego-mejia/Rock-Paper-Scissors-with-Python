@@ -1,0 +1,62 @@
+import random
+options = ('rock', 'paper', 'scissor')
+
+computer_wins = 0
+user_wins = 0
+round = 1
+
+while True:
+  user_option = input('Rock, Paper o Scissor => ')
+  user_option = user_option.lower()
+
+  if not user_option in options:
+    print("Pick again! >:(")
+    print("\n")
+    continue
+  
+  print('*' * 10)
+  print('ROUND', round)
+  print('*' * 10)
+  computer_option = random.choice(options)
+  template = "Terminator => {}".format(computer_option.capitalize())
+  print(template)
+  print(f"You => {user_option.capitalize()}")
+  
+  if user_option == computer_option:
+    print('¡TIE!')
+  elif user_option == options[0]: #PIEDRA
+    if computer_option == options[2]:#TIJERA
+      print('¡YOU WON!')
+      user_wins += 1
+    else:
+      print('YOU LOST :( ')
+      computer_wins += 1
+  
+  elif user_option == options[2]:
+    if computer_option == options[1]:
+      print('¡YOU WON!')
+      user_wins += 1
+    else:
+      print('YOU LOST :( ')
+      computer_wins += 1
+  
+  elif user_option == options[1]:
+    if computer_option == options[0]: 
+      print('¡YOU WON!')
+      user_wins += 1
+    else:
+      print('YOU LOST :( ')
+      computer_wins += 1
+#LOGICA PARA ROMPER EL CICLO
+  print('\n')
+  if computer_wins == 2:
+    print('*-------------------------------*')
+    print('The TERMINATOR conquered the Earth')
+    print('*-------------------------------*')
+    break
+  if user_wins == 2:
+    print('*-------------------------------*')
+    print('You saved the Earth!!!!')
+    print('*-------------------------------*')
+    break
+  round += 1
